@@ -1,0 +1,16 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Nothing heavy to install"
+  build:
+    commands:
+      - echo "Preparing build..."
+      - mkdir dist
+      - cp -r * dist/
+artifacts:
+  files:
+    - "**/*"
+  base-directory: dist
