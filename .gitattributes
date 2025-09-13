@@ -1,0 +1,15 @@
+# Force LF for shell scripts (Linux expects LF)
+*.sh text eol=lf
+
+# Keep Windows-style CRLF for common text files
+*.bat text eol=crlf
+
+# Use LF for code files (JS, HTML, CSS, YAML)
+*.js  text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Default: let Git handle others
+* text=auto
