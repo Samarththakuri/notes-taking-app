@@ -3,15 +3,17 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Nothing heavy to install"
+      - echo "Installing dependencies (none for static site)"
   build:
     commands:
-      - echo "Building app..."
-      - rm -rf dist # remove old dist folder if exists
-      - mkdir -p dist # create fresh dist folder
-      - cp -r $(ls | grep -v '^dist$') dist/ # copy everything except dist into dist
+      - echo "Preparing dist folder..."
+      - mkdir -p dist
+      - cp index.html dist/
+      - cp style.css dist/
+      - cp app.js dist/
+
 artifacts:
   files:
-    - appspec.yml
+    - appspec.yaml
     - scripts/**/*
     - dist/**/*
