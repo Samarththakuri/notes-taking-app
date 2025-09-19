@@ -7,8 +7,9 @@ phases:
   build:
     commands:
       - echo "Building app..."
-      - mkdir -p dist
-      - cp -r * dist/ # make sure this doesn't copy dist into itself
+      - rm -rf dist # remove old dist folder if exists
+      - mkdir -p dist # create fresh dist folder
+      - cp -r $(ls | grep -v '^dist$') dist/ # copy everything except dist into dist
 artifacts:
   files:
     - appspec.yml
