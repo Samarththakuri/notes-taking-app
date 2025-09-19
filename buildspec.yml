@@ -1,4 +1,5 @@
 version: 0.2
+
 phases:
   install:
     commands:
@@ -6,8 +7,9 @@ phases:
   build:
     commands:
       - echo "Preparing build..."
-      - mkdir dist
+      - mkdir -p dist
       - rsync -av --exclude='dist' ./ dist/
+
 artifacts:
   files:
     - "**/*"
