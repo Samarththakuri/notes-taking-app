@@ -6,11 +6,11 @@ phases:
       - echo "Nothing heavy to install"
   build:
     commands:
-      - echo "Preparing build..."
+      - echo "Building app..."
       - mkdir -p dist
-      - rsync -av --exclude='dist' ./ dist/
-
+      - cp -r * dist/ # make sure this doesn't copy dist into itself
 artifacts:
   files:
-    - "**/*"
-  base-directory: dist
+    - appspec.yml
+    - scripts/**/*
+    - dist/**/*
