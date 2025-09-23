@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  NotesAppBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: notesapp-artifacts
+
+  CodeBuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: NotesAppBuild
+      Source:
+        Type: GITHUB
+        Location: https://github.com/Samarththakuri/notes-taking-app.git
+      Artifacts:
+        Type: S3
+        Location: notesapp-artifacts
+      Environment:
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/standard:5.0
+        Type: LINUX_CONTAINER
+
+  CodeDeployApplication:
+    Type: AWS::CodeDeploy::Application
+    Properties:
+      ComputePlatform: Server
